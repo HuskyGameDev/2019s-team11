@@ -180,12 +180,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: a2d5fb09371df834f9c4b8a7602e6916, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66c2223541315c743b9101d238734be2, type: 3}
   m_Color: {r: 0.8113208, g: 0.08036668, b: 0.08036668, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.04, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -340,13 +340,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a2d5fb09371df834f9c4b8a7602e6916, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: 66c2223541315c743b9101d238734be2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.04, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -420,12 +420,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a2d5fb09371df834f9c4b8a7602e6916, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66c2223541315c743b9101d238734be2, type: 3}
   m_Color: {r: 0.03773582, g: 0.00017799958, b: 0.00017799958, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.04, y: 0.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499757859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 706cfaf41c618454db4a5d01ee77a6e3, type: 3}
+  m_Script: {fileID: 11500000, guid: b2795774314929a4784c15dd72db0838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1499757861
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784104463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5b40f54e7438a4e9248c399430c1fd, type: 3}
+  m_Script: {fileID: 11500000, guid: ea5ec6dcc0fd9b64a8ea984d6af7e2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1499757860}
