@@ -113,4 +113,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 0.1
-  animation: {fileID: 0}
+  animation: {fileID: 531740043}
