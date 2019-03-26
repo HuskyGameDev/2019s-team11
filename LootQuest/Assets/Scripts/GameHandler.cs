@@ -11,6 +11,8 @@ public class GameHandler : MonoBehaviour
     private void Start()
     {
         healthBar.setSize(.4f);
+
+        healthBar.setColor(Color.red);
     }
 
   
