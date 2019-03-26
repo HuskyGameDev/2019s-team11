@@ -291,26 +291,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 531740042, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b0dfc1c51cb1fb94bb4f5e5c8b651f1e,
+    - target: {fileID: 4602292073606142291, guid: daeb21cac2773164a8da1763e3a2d030,
         type: 3}
-    - target: {fileID: 531740042, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
-      propertyPath: m_Size.y
-      value: 3.0625
-      objectReference: {fileID: 0}
-    - target: {fileID: 531740042, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 531740043, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bd55cfa09321eb6449317350936f2989, type: 2}
-    - target: {fileID: 531740044, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
       propertyPath: MoveSpeed
-      value: 10
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
