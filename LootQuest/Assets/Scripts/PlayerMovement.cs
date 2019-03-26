@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float MoveSpeed;
-    [SerializeField] Animator Walking;
+    [SerializeField] Animator animation;
     int direction;
     
 
@@ -24,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     void move()
     {
+        Vector3 movment = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+
+        transform.position = transform.position + movment * MoveSpeed;
+
+        /*
         //Move North
         if (Input.GetAxisRaw("Horizontal") == 0.0f && Input.GetAxisRaw("Vertical") > 0.0f)
         {
@@ -79,14 +84,12 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = 0;
         }
+        */
     }
 
     void Animate()
     {
-        if(Walking.GetInteger("walkingDirection") != direction)
-        {
-            Walking.SetInteger("walkingDirection", direction);
-        }
-        
+        animation.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        animation.SetFloat("Vertical", Input.GetAxis("Vetical"));
     }
 }
