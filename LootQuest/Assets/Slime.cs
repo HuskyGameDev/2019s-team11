@@ -13,7 +13,7 @@ public class Slime : EnemyStatsScript
 
     void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= ChaseRange)
+        if (Vector3.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
         }
