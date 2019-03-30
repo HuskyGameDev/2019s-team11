@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Healthbar : MonoBehaviour
 {
-    private Transform bar;
-    // Start is called before the first frame update
-    private void Awake()
+
+    public Transform bar;
+    private float maxHP = 100;
+    private float currentHP;
+
+    private void Start()
     {
-        bar = transform.Find("Bar");
+        currentHP = maxHP;
+        takeDamage(50f);
     }
 
-    public void setSize(float sizeNormalized)
+    public float normalize(float curHP, float maxHP)
     {
-        bar.localScale = new Vector3(sizeNormalized, 1f);
+        return curHP / maxHP;
     }
 
-    public void setColor(Color color)
+    public void takeDamage(float dmg)
     {
-        bar.Find("BarSprite").GetComponent<SpriteRenderer>().color = color;
+        currentHP -= dmg;
+        float newHealth = normalize(currentHP, maxHP);
+        bar.transform.localScale = new Vector3(newHealth, 1, 0);
     }
 }
