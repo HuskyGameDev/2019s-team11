@@ -15,6 +15,27 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private Tile botWallTile;
     [SerializeField]
+    private Tile rightWallTile;
+    [SerializeField]
+    private Tile leftWallTile;
+    [SerializeField]
+    private Tile ITRWallTile;
+    [SerializeField]
+    private Tile ITLWallTile;
+    [SerializeField]
+    private Tile IBRWallTile;
+    [SerializeField]
+    private Tile IBLWallTile;
+    [SerializeField]
+    private Tile OTRWallTile;
+    [SerializeField]
+    private Tile OTLWallTile;
+    [SerializeField]
+    private Tile OBRWallTile;
+    [SerializeField]
+    private Tile OBLWallTile;
+
+    [SerializeField]
     private Tilemap groundMap;
     [SerializeField]
     private Tilemap pitMap;
@@ -46,6 +67,76 @@ public class DungeonGenerator : MonoBehaviour
         NewRoute(x, y, routeLength, previousPos);
 
         FillWalls();
+
+        FixCorners();
+    }
+
+    private void FixCorners()
+    {
+        BoundsInt bounds = groundMap.cellBounds;
+        for (int xMap = bounds.xMin - 10; xMap <= bounds.xMax + 10; xMap++)
+        {
+            for (int yMap = bounds.yMin - 10; yMap <= bounds.yMax + 10; yMap++)
+            {
+                Vector3Int pos = new Vector3Int(xMap, yMap, 0);
+                Vector3Int posBellow = new Vector3Int(xMap, yMap - 1, 0);
+                Vector3Int posAbove = new Vector3Int(xMap, yMap + 1, 0);
+                Vector3Int posRight = new Vector3Int(xMap - 1, yMap, 0);
+                Vector3Int posLeft = new Vector3Int(xMap + 1, yMap, 0);
+
+                TileBase tile = wallMap.GetTile(pos);
+                TileBase tileBellow = wallMap.GetTile(posBellow);
+                TileBase tileAbove = wallMap.GetTile(posAbove);
+                TileBase tileRight = wallMap.GetTile(posRight);
+                TileBase tileLeft = wallMap.GetTile(posLeft);
+
+                if ( tile == topWallTile )
+                {
+                    if ( tileAbove == rightWallTile && tileLeft == topWallTile )
+                    {
+                        wallMap.SetTile(pos, OBLWallTile);
+                    }
+                    else if ( tileAbove == leftWallTile && tileRight == topWallTile )
+                    {
+                        wallMap.SetTile(pos, OBRWallTile);
+                    }
+                }
+                if ( tile == botWallTile )
+                {
+                    if ( tileBellow == rightWallTile )
+                    {
+                        wallMap.SetTile(pos, OTLWallTile);
+                    }
+                    else if ( tileBellow == leftWallTile )
+                    {
+                        wallMap.SetTile(pos, OTRWallTile);
+                    }
+                }
+
+                //Checking for pit (filler) tiles
+                tile = pitMap.GetTile(pos);
+
+                if ( tile == pitTile )
+                {
+                    if ( tileAbove == rightWallTile && tileRight == botWallTile )
+                    {
+                        wallMap.SetTile(pos, IBRWallTile);
+                    }
+                    else if ( tileAbove == leftWallTile && tileLeft == botWallTile )
+                    {
+                        wallMap.SetTile(pos, IBLWallTile);
+                    }
+                    else if ( tileBellow == leftWallTile && tileLeft == topWallTile )
+                    {
+                        wallMap.SetTile(pos, ITLWallTile);
+                    }
+                    else if ( tileBellow == rightWallTile && tileRight == topWallTile )
+                    {
+                        wallMap.SetTile(pos, ITRWallTile);
+                    }
+                }
+            }
+        }
     }
 
     private void FillWalls()
@@ -58,9 +149,15 @@ public class DungeonGenerator : MonoBehaviour
                 Vector3Int pos = new Vector3Int(xMap, yMap, 0);
                 Vector3Int posBellow = new Vector3Int(xMap, yMap - 1, 0);
                 Vector3Int posAbove = new Vector3Int(xMap, yMap + 1, 0);
+                Vector3Int posRight = new Vector3Int(xMap - 1, yMap, 0);
+                Vector3Int posLeft = new Vector3Int(xMap + 1, yMap, 0);
+
                 TileBase tile = groundMap.GetTile(pos);
                 TileBase tileBellow = groundMap.GetTile(posBellow);
                 TileBase tileAbove = groundMap.GetTile(posAbove);
+                TileBase tileRight = groundMap.GetTile(posRight);
+                TileBase tileLeft = groundMap.GetTile(posLeft);
+
                 if (tile == null)
                 {
                     pitMap.SetTile(pos, pitTile);
@@ -71,6 +168,14 @@ public class DungeonGenerator : MonoBehaviour
                     else if (tileAbove != null)
                     {
                         wallMap.SetTile(pos, botWallTile);
+                    }
+                    else if (tileRight != null)
+                    {
+                        wallMap.SetTile(pos, rightWallTile);
+                    }
+                    else if (tileLeft != null)
+                    {
+                        wallMap.SetTile(pos, leftWallTile);
                     }
                 }
 

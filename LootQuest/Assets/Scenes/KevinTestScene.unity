@@ -146,6 +146,16 @@ MonoBehaviour:
   pitTile: {fileID: 11400000, guid: ef8a4bcf07dedeb49a8d3d7cc2dae4f1, type: 2}
   topWallTile: {fileID: 11400000, guid: 3b6d8bc1c1ea12a4a844189593253ac5, type: 2}
   botWallTile: {fileID: 11400000, guid: ad4862fecfa56984594cb62d0c392064, type: 2}
+  rightWallTile: {fileID: 11400000, guid: 4613f96db53b1c94fbb5a0e36cae8768, type: 2}
+  leftWallTile: {fileID: 11400000, guid: ae2edd8f665fea647a79cfd16b566e2d, type: 2}
+  ITRWallTile: {fileID: 11400000, guid: f523cf84cbc4e3c429cf36dcb76b0511, type: 2}
+  ITLWallTile: {fileID: 11400000, guid: f21c0e1a2f3006a48b558f5e3707dfbe, type: 2}
+  IBRWallTile: {fileID: 11400000, guid: dc97d530726823b4b97129b004969dc3, type: 2}
+  IBLWallTile: {fileID: 11400000, guid: efc5eea7c3915584db51ce2c73a41961, type: 2}
+  OTRWallTile: {fileID: 11400000, guid: b4c1e4d54b22ff04ba5af1c9f85dacb3, type: 2}
+  OTLWallTile: {fileID: 11400000, guid: 1814c02d88e03bc40a8115da41f36d2a, type: 2}
+  OBRWallTile: {fileID: 11400000, guid: b718fd91b66237e499bc7e4d975fd156, type: 2}
+  OBLWallTile: {fileID: 11400000, guid: 0a897c4a0170c7f4fae11edafda34d51, type: 2}
   groundMap: {fileID: 1983418319}
   pitMap: {fileID: 1190172101}
   wallMap: {fileID: 1561073353}
@@ -390,6 +400,7 @@ GameObject:
   - component: {fileID: 1561073355}
   - component: {fileID: 1561073353}
   - component: {fileID: 1561073354}
+  - component: {fileID: 1561073356}
   m_Layer: 0
   m_Name: Dynamic Wall (TileMap)
   m_TagString: Untagged
@@ -493,6 +504,20 @@ Transform:
   m_Father: {fileID: 390859303}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!19719996 &1561073356
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561073352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!1 &1983418318
 GameObject:
   m_ObjectHideFlags: 0
