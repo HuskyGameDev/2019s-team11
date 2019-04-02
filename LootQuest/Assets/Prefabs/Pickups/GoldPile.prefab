@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3227818111684857774, guid: dc25885f00fa70548aa86860e18ecf5e,
         type: 3}
       propertyPath: m_Name
-      value: Consumable
+      value: GoldPile
       objectReference: {fileID: 0}
     - target: {fileID: 1759531881866316651, guid: dc25885f00fa70548aa86860e18ecf5e,
         type: 3}
@@ -66,6 +66,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156835510892613132, guid: dc25885f00fa70548aa86860e18ecf5e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 506ae145a0c1f744b8ad12bf2a28cdea,
+        type: 3}
+    - target: {fileID: 4156835510892613132, guid: dc25885f00fa70548aa86860e18ecf5e,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc25885f00fa70548aa86860e18ecf5e, type: 3}
