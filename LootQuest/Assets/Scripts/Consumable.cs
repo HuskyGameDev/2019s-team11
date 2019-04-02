@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameHandler : MonoBehaviour
+public class Consumable : MonoBehaviour
 {
-
-    [SerializeField] private Healthbar healthBar;
-
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-       
+        
     }
 
-  
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

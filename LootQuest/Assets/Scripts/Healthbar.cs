@@ -7,7 +7,7 @@ public class Healthbar : MonoBehaviour
 
     public Transform bar;
     private float maxHP = 100;
-    private float currentHP;
+    public float currentHP;
 
     private void Start()
     {
@@ -26,4 +26,6 @@ public class Healthbar : MonoBehaviour
         float newHealth = normalize(currentHP, maxHP);
         bar.transform.localScale = new Vector3(newHealth, 1, 0);
     }
+
+
 }
