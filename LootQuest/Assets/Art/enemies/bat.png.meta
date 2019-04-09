@@ -89,9 +89,9 @@ TextureImporter:
       name: bat_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 23
+        x: 1
+        y: 2
+        width: 16
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -100,7 +100,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f708fe2cb1aaf0e4e9f57349cf2b6b6f
+      spriteID: 6cc5eca00dd167f4ca1d4b44ee1cb62c
       vertices: []
       indices: 
       edges: []
@@ -109,10 +109,10 @@ TextureImporter:
       name: bat_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 17
         y: 1
-        width: 23
-        height: 12
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,7 +120,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21bb9b5329932e54dae0135c2610ce78
+      spriteID: bba52320ea6001a4abce27f97f08c0d3
       vertices: []
       indices: 
       edges: []
