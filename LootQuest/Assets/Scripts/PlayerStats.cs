@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 
     public static float playerHealth;
     public static float maxHP = 100;
+    public static int gold = 0;
     private float hitDelay = 0.5f;
     public GameObject player;
     private bool playerHit;

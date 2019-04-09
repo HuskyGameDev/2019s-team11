@@ -22,6 +22,12 @@ public class HealthPotion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+          
+            PlayerStats.playerHealth += 10;
+            if(PlayerStats.playerHealth > PlayerStats.maxHP)
+            {
+                PlayerStats.playerHealth = PlayerStats.maxHP;
+            }
             this.gameObject.SetActive(false);
         }
     }
