@@ -143,8 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   MoveSpeed: 2
-  AttackRange: 5
-  ChaseRange: 10
+  AttackRange: 4
+  ChaseRange: 8
   AttackPower: 0
   SpawnPoint: {fileID: 0}
   target: {fileID: 0}

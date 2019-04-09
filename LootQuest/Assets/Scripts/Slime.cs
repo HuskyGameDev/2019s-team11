@@ -9,6 +9,7 @@ public class Slime : EnemyStatsScript
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        SpawnPoint = transform.position;
     }
 
     void CheckDistance()
@@ -16,6 +17,10 @@ public class Slime : EnemyStatsScript
         if (Vector3.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+        }
+        else if (Vector3.Distance(target.position, transform.position) >= ChaseRange * 2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, SpawnPoint, MoveSpeed * Time.deltaTime);
         }
     }
 
