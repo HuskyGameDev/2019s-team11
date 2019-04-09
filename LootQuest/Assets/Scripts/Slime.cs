@@ -14,20 +14,32 @@ public class Slime : EnemyStatsScript
 
     void CheckDistance()
     {
-        
         if (Vector2.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
         }
         else if (Vector2.Distance(target.position, transform.position) >= ChaseRange * 2)
         {
-            transform.position = Vector3.MoveTowards(transform.position, SpawnPoint, MoveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, SpawnPoint, MoveSpeed * Time.deltaTime);
+        }
+    }
+
+    void CheckHealth()
+    {
+        if (Health <= 0)
+        {
+            //play death animation
+            //spawn loot?
+            //death effect?
+
+            Destroy(gameObject);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckHealth();
         CheckDistance();
     }
 }

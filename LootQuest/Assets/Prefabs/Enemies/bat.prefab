@@ -77,14 +77,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4375, y: 0.9375}
+    oldSize: {x: 1, y: 0.9375}
     newSize: {x: 0.23, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 1
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4375, y: 0.9375}
+  m_Size: {x: 1, y: 0.9375}
   m_EdgeRadius: 0
 --- !u!212 &7929850631967046024
 SpriteRenderer:
@@ -151,5 +151,5 @@ MonoBehaviour:
   AttackRange: 2
   ChaseRange: 5
   AttackPower: 0
-  SpawnPoint: {fileID: 0}
+  SpawnPoint: {x: 0, y: 0}
   target: {fileID: 0}
