@@ -9,7 +9,7 @@ public class EnemyStatsScript : MonoBehaviour
     public int AttackRange;
     public int ChaseRange;
     public int AttackPower;
-    public Vector3 SpawnPoint;
+    public Vector2 SpawnPoint;
 
     // Start is called before the first frame update
     void Start()

@@ -16,11 +16,11 @@ public class Skeleton : EnemyStatsScript
     void CheckDistance()
     {
         SpawnPoint = transform.position;
-        if (Vector3.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
+        if (Vector2.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, -MoveSpeed * Time.deltaTime);
         }
-        else if (Vector3.Distance(target.position, transform.position) >= ChaseRange * 2)
+        else if (Vector2.Distance(target.position, transform.position) >= ChaseRange * 2)
         {
             transform.position = Vector3.MoveTowards(transform.position, SpawnPoint, MoveSpeed * Time.deltaTime);
         }
