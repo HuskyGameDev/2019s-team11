@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
-    public float playerHealth;
+    public static float playerHealth;
+    public static float maxHP = 100;
     private float hitDelay = 0.5f;
     public GameObject player;
     private bool playerHit;

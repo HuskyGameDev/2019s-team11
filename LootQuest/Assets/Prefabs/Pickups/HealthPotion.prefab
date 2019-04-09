@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3213582069376858965}
   - component: {fileID: 6492406705151045689}
   - component: {fileID: 6492406705151045690}
+  - component: {fileID: 8564160703906213034}
   m_Layer: 0
   m_Name: HealthPotion
   m_TagString: Untagged
@@ -128,3 +129,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8564160703906213034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492406705151045687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173971aca706a8746ac085ebd0a51ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
