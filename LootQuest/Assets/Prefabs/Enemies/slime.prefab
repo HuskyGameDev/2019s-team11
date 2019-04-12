@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
-  MoveSpeed: 1
+  MoveSpeed: 2
   AttackRange: 2
   ChaseRange: 5
   AttackPower: 0
-  SpawnPoint: {fileID: 0}
+  SpawnPoint: {x: 0, y: 0}
   target: {fileID: 0}
