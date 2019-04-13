@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-public class PauseManager : MonoBehaviour {
+public class Pause : MonoBehaviour {
     
     Canvas canvas;
     
@@ -19,11 +19,11 @@ public class PauseManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            PauseGame();
         }
     }
     
-    public void Pause()
+    public void PauseGame()
     {
         canvas.enabled = !canvas.enabled;
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
