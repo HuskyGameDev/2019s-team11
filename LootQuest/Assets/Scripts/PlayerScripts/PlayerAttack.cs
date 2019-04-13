@@ -8,6 +8,11 @@ public class PlayerAttack : MonoBehaviour
     public float startTimeBetweenAttack;
 
     public Transform attackPosition;
+
+
+    public Vector2 directionOfAttack;
+    public Vector2 range;
+
     public float attackRange;
     public LayerMask whatIsEnemies;
     public int damage;
@@ -18,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("MeleeAttack"))
             {
+                range = new Vector2(0, 0);
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosition.position, attackRange, whatIsEnemies);
                 for(int i = 0; i < enemiesToDamage.Length; i++)
                 {
@@ -36,5 +42,6 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
+
     }
 }
