@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8036891716986770418}
   - component: {fileID: 8036891716986770417}
   - component: {fileID: 8036891716986770419}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.9375, y: 1.75}
+    oldSize: {x: 2, y: 1.75}
     newSize: {x: 1.9375, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6f2038e2e37484ab104e03f74560a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
-  MoveSpeed: 2
-  AttackRange: 2
-  ChaseRange: 5
-  AttackPower: 0
-  SpawnPoint: {x: 0, y: 0}
+  health: 1
+  moveSpeed: 2
+  attackRange: 1
+  chaseRange: 6
+  attackPower: 1
+  spawnPoint: {x: 0, y: 0}
   target: {fileID: 0}
