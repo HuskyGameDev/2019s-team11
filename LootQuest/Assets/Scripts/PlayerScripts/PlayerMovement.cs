@@ -39,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
     void Animate()
     {
         Vector2 relativePosition = new Vector2(GetComponent<Transform>().position.x - Input.mousePosition.x, GetComponent<Transform>().position.y - Input.mousePosition.y);
-        animation.SetFloat("Horizontal", relativePosition.x);
-        animation.SetFloat("Veritcal", relativePosition.y);
+        //animation.SetFloat("Horizontal", relativePosition.x);
+       // animation.SetFloat("Veritcal", relativePosition.y);
+
     }
 
     public Vector2 getDirection()
