@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeKing : EnemyStatsScript
+public class SlimeKing : EnemyStats
 {
     public Transform target;
     private float timer = 5f;
@@ -16,12 +16,12 @@ public class SlimeKing : EnemyStatsScript
 
     void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
     }
 
     void CheckHealth()
     {
-        if (Health <= 0)
+        if (health <= 0)
         {
             //play death animation
             //spawn loot?

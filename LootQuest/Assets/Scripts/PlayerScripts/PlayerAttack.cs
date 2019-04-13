@@ -4,62 +4,37 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject meleeHitbox;
-    public float meleeDamage;
-    public float rangedDamage;
+    private float timeBetweenAttack;
+    public float startTimeBetweenAttack;
 
+    public Transform attackPosition;
+    public float attackRange;
+    public LayerMask whatIsEnemies;
+    public int damage;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        meleeHitbox.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Attack();
-    }
-
-    private void Attack()
-    {
-        if (Input.GetButtonDown("MeleeAttack"))
+        if (timeBetweenAttack <= 0)
         {
-            meleeAttack();
+            if (Input.GetButtonDown("MeleeAttack"))
+            {
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPosition.position, attackRange, whatIsEnemies);
+                for(int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<EnemyStats>().TakeDamage(damage);
+                }
+                timeBetweenAttack = startTimeBetweenAttack;
+            }
         }
-        if (Input.GetButtonDown("RangedAttack"))
+        else
         {
-            rangedAttack();
-        }
-    }
-
-    private void meleeAttack()
-    {
-        //play animation
-        //spawn hitbox
-        meleeHitbox.SetActive(true);
-        //deal damage if something is in hitbox
-        
-        //despawn hitbox
-        meleeHitbox.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.tag == "Enemy")
-        {
-            damageEnemy(meleeDamage);
+            timeBetweenAttack -= Time.deltaTime;
         }
     }
 
-    private void rangedAttack()
+    private void OnDrawGizmosSelected()
     {
-        //play animation
-        //spawn projectile
-    }
-
-    private void damageEnemy(float damage)
-    {
-
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPosition.position, attackRange);
     }
 }

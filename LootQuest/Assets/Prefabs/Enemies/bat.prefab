@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7929850631967046031}
   - component: {fileID: 7929850631967046024}
   - component: {fileID: 7929850631967046025}
-  m_Layer: 0
+  - component: {fileID: 7960652254877625846}
+  m_Layer: 8
   m_Name: bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,10 +147,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3660ac33b3edef7408245229f5796de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
-  MoveSpeed: 3
-  AttackRange: 2
-  ChaseRange: 5
-  AttackPower: 0
-  SpawnPoint: {x: 0, y: 0}
+  health: 1
+  moveSpeed: 1
+  attackRange: 1
+  chaseRange: 5
+  attackPower: 1
+  spawnPoint: {x: 0, y: 0}
   target: {fileID: 0}
+--- !u!114 &7960652254877625846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929850631967046026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0523abac492536349ab0d01bbfef4bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  moveSpeed: 0
+  attackRange: 0
+  chaseRange: 0
+  attackPower: 0
+  spawnPoint: {x: 0, y: 0}

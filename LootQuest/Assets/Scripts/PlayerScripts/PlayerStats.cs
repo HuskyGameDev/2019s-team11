@@ -6,31 +6,21 @@ public class PlayerStats : MonoBehaviour
 {
 
     public static float playerHealth;
-    public static float maxHP = 100;
-    public static int gold = 0;
-    private float hitDelay = 0.5f;
-    public GameObject player;
-    private bool playerHit;
+    public static float maxHP;
+    public static int gold;
 
-    // Start is called before the first frame update
-    void Start()
+    void start()
     {
-        
+        maxHP = 100;
+        playerHealth = 0;
+        gold = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!playerHit)
-        {
 
-        }
-    }
-
-    private void applyDamage(int damage)
+    private void takeDamage(int damage)
     {
         
-        playerHealth = playerHealth - damage;
+        playerHealth -= damage;
         if(playerHealth <= 0)
         {
             Die();
@@ -40,6 +30,6 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         //play death animation
-        Destroy(player);
+        Destroy(gameObject);
     }
 }

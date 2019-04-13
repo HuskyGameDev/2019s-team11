@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : EnemyStatsScript
+public class Slime : EnemyStats
 {
     public Transform target;
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        SpawnPoint = transform.position;
+        spawnPoint = transform.position;
     }
 
     void CheckDistance()
     {
-        if(Vector2.Distance(target.position, transform.position) <= ChaseRange && Vector3.Distance(target.position, transform.position) >= AttackRange)
+        if (Vector2.Distance(target.position, transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) >= attackRange)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }
-        else if (Vector2.Distance(target.position, transform.position) >= ChaseRange * 2)
+        else if (Vector2.Distance(target.position, transform.position) >= chaseRange * 2)
         {
-            transform.position = Vector2.MoveTowards(transform.position, SpawnPoint, MoveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, spawnPoint, moveSpeed * Time.deltaTime);
         }
     }
 
     void CheckHealth()
     {
-        if (Health <= 0)
+        if (health <= 0)
         {
             //play death animation
             //spawn loot?

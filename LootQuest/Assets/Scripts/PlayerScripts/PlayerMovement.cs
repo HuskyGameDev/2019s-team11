@@ -6,8 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float MoveSpeed;
-    [SerializeField] Animator animation;
+    private new Animator animation;
     int direction;
+    
+    void Start()
+    {
+        animation = GetComponent<Animator>();
+    }
     
 
     // Update is called once per frame
@@ -90,6 +95,6 @@ public class PlayerMovement : MonoBehaviour
     void Animate()
     {
         animation.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-        animation.SetFloat("Vertical", Input.GetAxis("Vetical"));
+        animation.SetFloat("Vertical", Input.GetAxis("Vertical"));
     }
 }
