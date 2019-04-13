@@ -206,7 +206,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -5}
+  m_Offset: {x: 0.07164955, y: -8.384012}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -217,7 +217,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.8125, y: 11.8125}
+  m_Size: {x: 12.579834, y: 5.0444756}
   m_EdgeRadius: 0
 --- !u!61 &374723972
 BoxCollider2D:
@@ -1085,6 +1085,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557523417140025144, guid: cb9abb57c2e0cc74da00df6a11d28322,
+        type: 3}
+      propertyPath: sceneToLoad
+      value: Dungeon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb9abb57c2e0cc74da00df6a11d28322, type: 3}
