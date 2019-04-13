@@ -6,17 +6,26 @@ using UnityEngine.SceneManagement;
 public class Stairs : MonoBehaviour
 {
     public string sceneToLoad;
+    bool isOnStairs = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
+
+        isOnStairs = true;
+        Debug.Log(isOnStairs);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isOnStairs = false;
     }
 
     private void Update()
     {
-        
+        if (Input.GetButtonDown("Interact") && isOnStairs == true)
+        {
+            Debug.Log("wooooo");
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 }
