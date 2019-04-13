@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7928822259760719624}
   - component: {fileID: 7928822259760719625}
   - component: {fileID: 1882189884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: slimeKing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,12 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278548f6d0d524949b64ceb2df4a067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 20
-  MoveSpeed: 1
-  AttackRange: 0
-  ChaseRange: 0
-  AttackPower: 0
-  SpawnPoint: {x: 0, y: 0}
+  health: 10
+  moveSpeed: 1
+  attackRange: 0
+  chaseRange: 0
+  attackPower: 1
+  spawnPoint: {x: 0, y: 0}
   target: {fileID: 0}
   spawnpoints: []
   enemy: {fileID: 983637418222817326, guid: 3eb80069202b8b84f88166e31afd3565, type: 3}
