@@ -314,7 +314,7 @@ PrefabInstance:
     - target: {fileID: 7929850631967046025, guid: 1acf7bf43e4248a4fb7fe63fa8d7ef61,
         type: 3}
       propertyPath: health
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7960652254877625846, guid: 1acf7bf43e4248a4fb7fe63fa8d7ef61, type: 3}
@@ -385,6 +385,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 531740042, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeb21cac2773164a8da1763e3a2d030, type: 3}

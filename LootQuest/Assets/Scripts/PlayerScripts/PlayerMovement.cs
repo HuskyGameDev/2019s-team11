@@ -8,7 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed;
     private new Animator animation;
     private Vector2 direction;
-    
+    Vector2 relativePosition;
+
+
     void Start()
     {
         animation = GetComponent<Animator>();
@@ -32,16 +34,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movment = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
 
         transform.position = transform.position + movment * MoveSpeed;
-
-
-        
-
     }
 
     void Animate()
     {
-        animation.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-        animation.SetFloat("Vertical", Input.GetAxis("Vertical"));
+        Vector2 relativePosition = new Vector2(GetComponent<Transform>().position.x - Input.mousePosition.x, GetComponent<Transform>().position.y - Input.mousePosition.y);
+        animation.SetFloat("Horizontal", relativePosition.x);
+        animation.SetFloat("Veritcal", relativePosition.y);
     }
 
     public Vector2 getDirection()
@@ -49,46 +48,22 @@ public class PlayerMovement : MonoBehaviour
         //Move North
         if (Input.GetAxisRaw("Horizontal") == 0.0f && Input.GetAxisRaw("Vertical") > 0.0f)
         {
-            direction = new Vector2(0, 1);
-        }
-        //Move North-West
-        else if (Input.GetAxisRaw("Horizontal") < 0.0f && Input.GetAxisRaw("Vertical") > 0.0f)
-        {
-            direction = new Vector2(0, 1);
+            direction = Vector2.up;
         }
         //Move West
         else if (Input.GetAxisRaw("Horizontal") < 0.0f && Input.GetAxisRaw("Vertical") == 0.0f)
         {
-            direction = new Vector2(0, 1);
-        }
-        //Move South-West
-        else if (Input.GetAxisRaw("Horizontal") < 0.0f && Input.GetAxisRaw("Vertical") < 0.0f)
-        {
-            direction = new Vector2(0, 1);
+            direction = Vector2.left;
         }
         //Move South
         else if (Input.GetAxisRaw("Horizontal") == 0.0f && Input.GetAxisRaw("Vertical") < 0.0f)
         {
-            direction = new Vector2(0, 1);
-        }
-        //Move South-East
-        else if (Input.GetAxisRaw("Horizontal") > 0.0f && Input.GetAxisRaw("Vertical") < 0.0f)
-        {
-            direction = new Vector2(0, 1);
+            direction = Vector2.down;
         }
         //Move East
         else if (Input.GetAxisRaw("Horizontal") > 0.0f && Input.GetAxisRaw("Vertical") == 0.0f)
         {
-            direction = new Vector2(0, 1);
-        }
-        //Move North-East
-        else if (Input.GetAxisRaw("Horizontal") > 0.0f && Input.GetAxisRaw("Vertical") > 0.0f)
-        {
-            direction = new Vector2(0, 1);
-        }
-        else
-        {
-            direction = new Vector2(0, 1);
+            direction = Vector2.right;
         }
 
         return direction;
