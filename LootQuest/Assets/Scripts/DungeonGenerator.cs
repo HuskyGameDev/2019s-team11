@@ -135,6 +135,31 @@ public class DungeonGenerator : MonoBehaviour
                         wallMap.SetTile(pos, ITRWallTile);
                     }
                 }
+
+                //Checking for wall tiles
+                tile = wallMap.GetTile(pos);
+                if ( tile == botWallTile)
+                {
+                    if (tileAbove == groundTile && tileRight == groundTile)
+                    {
+                        wallMap.SetTile(pos, OTRWallTile);
+                    }
+                    else if (tileAbove == groundTile && tileLeft == groundTile)
+                    {
+                        wallMap.SetTile(pos, OTLWallTile);
+                    }
+                }
+                else if (tile == topWallTile)
+                {
+                    if (tileBellow == groundTile && tileRight == groundTile)
+                    {
+                        wallMap.SetTile(pos, OBRWallTile);
+                    }
+                    else if (tileBellow == groundTile && tileLeft == groundTile)
+                    {
+                        wallMap.SetTile(pos, OBLWallTile);
+                    }
+                }
             }
         }
     }
