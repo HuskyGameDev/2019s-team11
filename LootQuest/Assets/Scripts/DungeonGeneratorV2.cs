@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -93,6 +94,8 @@ public class DungeonGenerator1 : MonoBehaviour
 
         findExitPath(startX, startY);
     }
+
+
 
     private string[,] findExitPath(int startX, int startY)
     {
@@ -216,6 +219,388 @@ public class DungeonGenerator1 : MonoBehaviour
                 createPath(path, xP - 1, yP);
             }
         }
+    }
+
+    public String[,] corridorCreater(String[,] floor, String[,] path)
+    {
+        String[,] newFloor = new String[floorWidth,floorHeight];
+        for (int y = 0; y < floorHeight; y++)
+        {
+            for (int x = 0; x < floorWidth; x++)
+            {
+                newFloor[x,y] = "____";
+            }
+        }
+        int chance = 0;
+        var regex = new Regex(Regex.Escape("_"));
+
+        for (int y = 0; y < floorHeight; y++)
+        {
+            for (int x = 0; x < floorWidth; x++)
+            {
+                //Get the current corridor(cor) pointers of the room at floor[x][y]
+                String cor = newFloor[x,y];
+
+                if (path[x,y].Equals("E"))
+                {
+                    //If path[x][y] is E the exit, we need to find the next room and link them with a corridor
+                    //cor = cor + "E";
+
+                    if (y > 0 && path[x,y - 1].Equals("X"))
+                    {
+                        //The next room is above the Exit, make a link on Exit pointing up
+                        if (!cor.Contains("^"))
+                        {
+                            cor = regex.Replace(cor, "^", 1);
+                        }
+
+                        if (!newFloor[x,y - 1].Contains("v"))
+                        {
+                            //If the next room doesn't already point down to the Exit, make it
+                            newFloor[x, y - 1] = regex.Replace(newFloor[x, y - 1], "v", 1);
+                        }
+
+                    }
+                    else if (y < floorHeight - 1 && path[x,y + 1].Equals("X"))
+                    {
+                        //The next room is below the Exit, make a link on Exit pointing down
+                        if (!cor.Contains("v"))
+                        {
+                            cor = regex.Replace(cor, "v", 1);
+                        }
+
+                        if (!newFloor[x,y + 1].Contains("^"))
+                        {
+                            //If the next room doesn't already point up to the Exit, make it.
+                            newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
+                        }
+
+                    }
+                    else if (x > 0 && path[x - 1,y].Equals("X"))
+                    {
+                        //The next room is to the left of the Exit, make a link on Exit pointing left
+                        if (!cor.Contains("<"))
+                        {
+                            cor = regex.Replace(cor, "<", 1);
+                        }
+
+                        if (!newFloor[x - 1,y].Contains(">"))
+                        {
+                            //If the next room doesn't already point right to the Exit, make it.
+                            newFloor[x - 1, y] = regex.Replace(newFloor[x - 1, y], ">", 1);
+                        }
+
+                    }
+                    else if (x < floorWidth - 1 && path[x + 1,y].Equals("X"))
+                    {
+                        //The next room is to the right of the Exit, make a link on Exit pointing right
+                        if (!cor.Contains(">"))
+                        {
+                            cor = regex.Replace(cor, ">", 1);
+                        }
+
+                        if (!newFloor[x + 1,y].Contains("<"))
+                        {
+                            //If the next room doesn't already point left to the Exit, make it.
+                            newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
+                        }
+
+                    }
+
+                }
+                else if (path[x,y].Equals("S"))
+                {
+                    //If path[x][y] is the Start, do the same thing as Exit and find the next room to go to
+                    //cor = cor + "S";
+
+                    if (y > 0 && path[x,y - 1].Equals("X"))
+                    {
+                        //The next room is above
+                        if (!cor.Contains("^"))
+                        {
+                            cor = regex.Replace(cor, "^", 1);
+                        }
+
+                        if (!newFloor[x,y - 1].Contains("v"))
+                        {
+                            //Make the room point to Start if it doesn't already
+                            newFloor[x, y - 1] = regex.Replace(newFloor[x, y - 1], "v", 1);
+                        }
+
+                    }
+                    else if (y < floorHeight - 1 && path[x,y + 1].Equals("X"))
+                    {
+                        //The next room is below
+                        if (!cor.Contains("v"))
+                        {
+                            cor = regex.Replace(cor, "v", 1);
+                        }
+
+                        if (!newFloor[x,y + 1].Contains("^"))
+                        {
+                            //Make the room point to Start if it doesn't already
+                            newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
+                        }
+
+                    }
+                    else if (x > 0 && path[x - 1,y].Equals("X"))
+                    {
+                        //The next room is to the left
+                        if (!cor.Contains("<"))
+                        {
+                            cor = regex.Replace(cor, "<", 1);
+                        }
+
+                        if (!newFloor[x - 1,y].contains(">"))
+                        {
+                            //Make the room point to the Start if it doesn't already
+                            newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                        }
+
+                    }
+                    else if (x < w - 1 && path[x + 1][y].equals("X"))
+                    {
+                        //The next room is to the right
+                        if (!cor.contains(">"))
+                        {
+                            cor = cor.replaceFirst("_", ">");
+                        }
+
+                        if (!newFloor[x + 1][y].contains("<"))
+                        {
+                            //Make the room point to the Start if it doesn't already
+                            newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                        }
+
+                    }
+                }
+                else if (path[x][y].equals("X"))
+                {
+                    //Now if there is any room along the path, make sure it is connected to the other rooms (Other X's, S, and E)
+                    if (y > 0 && (path[x][y - 1].equals("X") || path[x][y - 1].equals("S") || path[x][y - 1].equals("E")))
+                    {
+                        //The room is above
+                        if (!cor.contains("^"))
+                        {
+                            cor = cor.replaceFirst("_", "^");
+                        }
+
+                        if (!newFloor[x][y - 1].contains("v"))
+                        {
+                            newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                        }
+
+                    }
+                    if (y < h - 1 && (path[x][y + 1].equals("X") || path[x][y + 1].equals("S") || path[x][y + 1].equals("E")))
+                    {
+                        //The room is below
+                        if (!cor.contains("v"))
+                        {
+                            cor = cor.replaceFirst("_", "v");
+                        }
+
+                        if (!newFloor[x][y + 1].contains("^"))
+                        {
+                            newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                        }
+
+                    }
+                    if (x > 0 && (path[x - 1][y].equals("X") || path[x - 1][y].equals("S") || path[x - 1][y].equals("E")))
+                    {
+                        //The room is to the left
+                        if (!cor.contains("<"))
+                        {
+                            cor = cor.replaceFirst("_", "<");
+                        }
+
+                        if (!newFloor[x - 1][y].contains(">"))
+                        {
+                            newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                        }
+
+                    }
+                    if (x < w - 1 && (path[x + 1][y].equals("X") || path[x + 1][y].equals("S") || path[x + 1][y].equals("E")))
+                    {
+                        //The room is to the right
+                        if (!cor.contains(">"))
+                        {
+                            cor = cor.replaceFirst("_", ">");
+                        }
+
+                        if (!newFloor[x + 1][y].contains("<"))
+                        {
+                            newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                        }
+
+                    }
+                }
+
+                //Generate more pointers so there isn't just the one path
+                if (floor[x][y].equals("S"))
+                {
+                    //The current room is the Start room.
+                    //Find more rooms next to Start and random pointers
+
+                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("^"))
+                        {
+                            cor = cor.replaceFirst("_", "^");
+                            if (!newFloor[x][y - 1].contains("v"))
+                            {
+                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                            }
+                        }
+                    }
+                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("v"))
+                        {
+                            cor = cor.replaceFirst("_", "v");
+                            if (!newFloor[x][y + 1].contains("^"))
+                            {
+                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                            }
+                        }
+                    }
+                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("<"))
+                        {
+                            cor = cor.replaceFirst("_", "<");
+                            if (!newFloor[x - 1][y].contains(">"))
+                            {
+                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                            }
+                        }
+                    }
+                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains(">"))
+                        {
+                            cor = cor.replaceFirst("_", ">");
+                            if (!newFloor[x + 1][y].contains("<"))
+                            {
+                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                            }
+                        }
+                    }
+
+                }
+                else if (floor[x][y].equals("E"))
+                {
+                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("^"))
+                        {
+                            cor = cor.replaceFirst("_", "^");
+                            if (!newFloor[x][y - 1].contains("v"))
+                            {
+                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                            }
+                        }
+                    }
+                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("v"))
+                        {
+                            cor = cor.replaceFirst("_", "v");
+                            if (!newFloor[x][y + 1].contains("^"))
+                            {
+                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                            }
+                        }
+                    }
+                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("<"))
+                        {
+                            cor = cor.replaceFirst("_", "<");
+                            if (!newFloor[x - 1][y].contains(">"))
+                            {
+                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                            }
+                        }
+                    }
+                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains(">"))
+                        {
+                            cor = cor.replaceFirst("_", ">");
+                            if (!newFloor[x + 1][y].contains("<"))
+                            {
+                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                            }
+                        }
+                    }
+                }
+                else if (floor[x][y].equals("X"))
+                {
+                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("^"))
+                        {
+                            cor = cor.replaceFirst("_", "^");
+                            if (!newFloor[x][y - 1].contains("v"))
+                            {
+                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                            }
+                        }
+                    }
+                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("v"))
+                        {
+                            cor = cor.replaceFirst("_", "v");
+                            if (!newFloor[x][y + 1].contains("^"))
+                            {
+                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                            }
+                        }
+                    }
+                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains("<"))
+                        {
+                            cor = cor.replaceFirst("_", "<");
+                            if (!newFloor[x - 1][y].contains(">"))
+                            {
+                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                            }
+                        }
+                    }
+                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    {
+                        chance = r.nextInt(cc);
+                        if (chance == 0 && !cor.contains(">"))
+                        {
+                            cor = cor.replaceFirst("_", ">");
+                            if (!newFloor[x + 1][y].contains("<"))
+                            {
+                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                            }
+                        }
+                    }
+                }
+
+                if (!cor.equals("____"))
+                {
+                    newFloor[x][y] = cor;
+                }
+            }
+        }
+        return newFloor;
     }
 
     private void genExit()
