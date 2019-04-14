@@ -63,6 +63,9 @@ public class DungeonGenerator1 : MonoBehaviour
     [SerializeField]
     private int chanceRight = -9;
 
+    [SerializeField]
+    private int corChance = 5;
+
     private string[,] floor;
     private int totalRooms;
     private int eX;
@@ -231,6 +234,7 @@ public class DungeonGenerator1 : MonoBehaviour
                 newFloor[x,y] = "____";
             }
         }
+        System.Random rand = new System.Random();
         int chance = 0;
         var regex = new Regex(Regex.Escape("_"));
 
@@ -351,252 +355,267 @@ public class DungeonGenerator1 : MonoBehaviour
                             cor = regex.Replace(cor, "<", 1);
                         }
 
-                        if (!newFloor[x - 1,y].contains(">"))
+                        if (!newFloor[x - 1,y].Contains(">"))
                         {
                             //Make the room point to the Start if it doesn't already
-                            newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                            newFloor[x - 1, y] = regex.Replace(newFloor[x - 1, y], ">", 1);
                         }
 
                     }
-                    else if (x < w - 1 && path[x + 1][y].equals("X"))
+                    else if (x < floorWidth - 1 && path[x + 1,y].Equals("X"))
                     {
                         //The next room is to the right
-                        if (!cor.contains(">"))
+                        if (!cor.Contains(">"))
                         {
-                            cor = cor.replaceFirst("_", ">");
+                            cor = regex.Replace(cor, ">", 1);
                         }
 
-                        if (!newFloor[x + 1][y].contains("<"))
+                        if (!newFloor[x + 1,y].Contains("<"))
                         {
                             //Make the room point to the Start if it doesn't already
-                            newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                            newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
                         }
 
                     }
                 }
-                else if (path[x][y].equals("X"))
+                else if (path[x,y].Equals("X"))
                 {
                     //Now if there is any room along the path, make sure it is connected to the other rooms (Other X's, S, and E)
-                    if (y > 0 && (path[x][y - 1].equals("X") || path[x][y - 1].equals("S") || path[x][y - 1].equals("E")))
+                    if (y > 0 && (path[x,y - 1].Equals("X") || path[x,y - 1].Equals("S") || path[x,y - 1].Equals("E")))
                     {
                         //The room is above
-                        if (!cor.contains("^"))
+                        if (!cor.Contains("^"))
                         {
-                            cor = cor.replaceFirst("_", "^");
+                            cor = regex.Replace(cor, "^", 1);
                         }
 
-                        if (!newFloor[x][y - 1].contains("v"))
+                        if (!newFloor[x,y - 1].Contains("v"))
                         {
-                            newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                            newFloor[x, y-1] = regex.Replace(newFloor[x, y-1], "v", 1);
                         }
 
                     }
-                    if (y < h - 1 && (path[x][y + 1].equals("X") || path[x][y + 1].equals("S") || path[x][y + 1].equals("E")))
+                    if (y < floorHeight - 1 && (path[x,y + 1].Equals("X") || path[x,y + 1].Equals("S") || path[x,y + 1].Equals("E")))
                     {
                         //The room is below
-                        if (!cor.contains("v"))
+                        if (!cor.Contains("v"))
                         {
-                            cor = cor.replaceFirst("_", "v");
+                            cor = regex.Replace(cor, "v", 1);
                         }
 
-                        if (!newFloor[x][y + 1].contains("^"))
+                        if (!newFloor[x,y + 1].Contains("^"))
                         {
-                            newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                            newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
                         }
 
                     }
-                    if (x > 0 && (path[x - 1][y].equals("X") || path[x - 1][y].equals("S") || path[x - 1][y].equals("E")))
+                    if (x > 0 && (path[x - 1,y].Equals("X") || path[x - 1,y].Equals("S") || path[x - 1,y].Equals("E")))
                     {
                         //The room is to the left
-                        if (!cor.contains("<"))
+                        if (!cor.Contains("<"))
                         {
-                            cor = cor.replaceFirst("_", "<");
+                            cor = regex.Replace(cor, "<", 1);
                         }
 
-                        if (!newFloor[x - 1][y].contains(">"))
+                        if (!newFloor[x - 1,y].Contains(">"))
                         {
-                            newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                            newFloor[x-1, y] = regex.Replace(newFloor[x-1, y], ">", 1);
                         }
 
                     }
-                    if (x < w - 1 && (path[x + 1][y].equals("X") || path[x + 1][y].equals("S") || path[x + 1][y].equals("E")))
+                    if (x < floorWidth - 1 && (path[x + 1,y].Equals("X") || path[x + 1,y].Equals("S") || path[x + 1,y].Equals("E")))
                     {
                         //The room is to the right
-                        if (!cor.contains(">"))
+                        if (!cor.Contains(">"))
                         {
-                            cor = cor.replaceFirst("_", ">");
+                            cor = regex.Replace(cor, ">", 1);
                         }
 
-                        if (!newFloor[x + 1][y].contains("<"))
+                        if (!newFloor[x + 1,y].Contains("<"))
                         {
-                            newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                            newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
                         }
 
                     }
                 }
 
                 //Generate more pointers so there isn't just the one path
-                if (floor[x][y].equals("S"))
+                if (floor[x,y].Equals("S"))
                 {
                     //The current room is the Start room.
                     //Find more rooms next to Start and random pointers
 
-                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    if (y > 0 && floor[x,y - 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("^"))
+
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("^"))
                         {
-                            cor = cor.replaceFirst("_", "^");
-                            if (!newFloor[x][y - 1].contains("v"))
+                            cor = regex.Replace(cor, "^", 1);
+                            if (!newFloor[x,y - 1].Contains("v"))
                             {
-                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                                newFloor[x, y-1] = regex.Replace(newFloor[x, y-1], "v", 1);
                             }
                         }
                     }
-                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    if (y < floorHeight - 1 && floor[x,y + 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("v"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("v"))
                         {
-                            cor = cor.replaceFirst("_", "v");
-                            if (!newFloor[x][y + 1].contains("^"))
+                            cor = regex.Replace(cor, "v", 1);
+                            if (!newFloor[x,y + 1].Contains("^"))
                             {
-                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                                newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
                             }
                         }
                     }
-                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    if (x > 0 && floor[x - 1,y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("<"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("<"))
                         {
-                            cor = cor.replaceFirst("_", "<");
-                            if (!newFloor[x - 1][y].contains(">"))
+                            cor = regex.Replace(cor, "<", 1);
+                            if (!newFloor[x - 1,y].Contains(">"))
                             {
-                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                                newFloor[x-1, y] = regex.Replace(newFloor[x-1,y], ">", 1);
                             }
                         }
                     }
-                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    if (x < floorWidth - 1 && floor[x + 1,y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains(">"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains(">"))
                         {
-                            cor = cor.replaceFirst("_", ">");
-                            if (!newFloor[x + 1][y].contains("<"))
+                            cor = regex.Replace(cor, ">", 1);
+                            if (!newFloor[x + 1,y].Contains("<"))
                             {
-                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                                newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
                             }
                         }
                     }
 
                 }
-                else if (floor[x][y].equals("E"))
+                else if (floor[x,y].Equals("E"))
                 {
-                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    if (y > 0 && floor[x, y - 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("^"))
+
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("^"))
                         {
-                            cor = cor.replaceFirst("_", "^");
-                            if (!newFloor[x][y - 1].contains("v"))
+                            cor = regex.Replace(cor, "^", 1);
+                            if (!newFloor[x, y - 1].Contains("v"))
                             {
-                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                                newFloor[x, y - 1] = regex.Replace(newFloor[x, y - 1], "v", 1);
                             }
                         }
                     }
-                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    if (y < floorHeight - 1 && floor[x, y + 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("v"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("v"))
                         {
-                            cor = cor.replaceFirst("_", "v");
-                            if (!newFloor[x][y + 1].contains("^"))
+                            cor = regex.Replace(cor, "v", 1);
+                            if (!newFloor[x, y + 1].Contains("^"))
                             {
-                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                                newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
                             }
                         }
                     }
-                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    if (x > 0 && floor[x - 1, y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("<"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("<"))
                         {
-                            cor = cor.replaceFirst("_", "<");
-                            if (!newFloor[x - 1][y].contains(">"))
+                            cor = regex.Replace(cor, "<", 1);
+                            if (!newFloor[x - 1, y].Contains(">"))
                             {
-                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                                newFloor[x - 1, y] = regex.Replace(newFloor[x - 1, y], ">", 1);
                             }
                         }
                     }
-                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    if (x < floorWidth - 1 && floor[x + 1, y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains(">"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains(">"))
                         {
-                            cor = cor.replaceFirst("_", ">");
-                            if (!newFloor[x + 1][y].contains("<"))
+                            cor = regex.Replace(cor, ">", 1);
+                            if (!newFloor[x + 1, y].Contains("<"))
                             {
-                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                                newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
                             }
                         }
                     }
                 }
-                else if (floor[x][y].equals("X"))
+                else if (floor[x,y].Equals("X"))
                 {
-                    if (y > 0 && floor[x][y - 1].equals("X"))
+                    if (y > 0 && floor[x, y - 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("^"))
+
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("^"))
                         {
-                            cor = cor.replaceFirst("_", "^");
-                            if (!newFloor[x][y - 1].contains("v"))
+                            cor = regex.Replace(cor, "^", 1);
+                            if (!newFloor[x, y - 1].Contains("v"))
                             {
-                                newFloor[x][y - 1] = newFloor[x][y - 1].replaceFirst("_", "v");
+                                newFloor[x, y - 1] = regex.Replace(newFloor[x, y - 1], "v", 1);
                             }
                         }
                     }
-                    if (y < h - 1 && floor[x][y + 1].equals("X"))
+                    if (y < floorHeight - 1 && floor[x, y + 1].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("v"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("v"))
                         {
-                            cor = cor.replaceFirst("_", "v");
-                            if (!newFloor[x][y + 1].contains("^"))
+                            cor = regex.Replace(cor, "v", 1);
+                            if (!newFloor[x, y + 1].Contains("^"))
                             {
-                                newFloor[x][y + 1] = newFloor[x][y + 1].replaceFirst("_", "^");
+                                newFloor[x, y + 1] = regex.Replace(newFloor[x, y + 1], "^", 1);
                             }
                         }
                     }
-                    if (x > 0 && floor[x - 1][y].equals("X"))
+                    if (x > 0 && floor[x - 1, y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains("<"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains("<"))
                         {
-                            cor = cor.replaceFirst("_", "<");
-                            if (!newFloor[x - 1][y].contains(">"))
+                            cor = regex.Replace(cor, "<", 1);
+                            if (!newFloor[x - 1, y].Contains(">"))
                             {
-                                newFloor[x - 1][y] = newFloor[x - 1][y].replaceFirst("_", ">");
+                                newFloor[x - 1, y] = regex.Replace(newFloor[x - 1, y], ">", 1);
                             }
                         }
                     }
-                    if (x < w - 1 && floor[x + 1][y].equals("X"))
+                    if (x < floorWidth - 1 && floor[x + 1, y].Equals("X"))
                     {
-                        chance = r.nextInt(cc);
-                        if (chance == 0 && !cor.contains(">"))
+                        chance = rand.Next(0, corChance);
+
+                        if (chance == 0 && !cor.Contains(">"))
                         {
-                            cor = cor.replaceFirst("_", ">");
-                            if (!newFloor[x + 1][y].contains("<"))
+                            cor = regex.Replace(cor, ">", 1);
+                            if (!newFloor[x + 1, y].Contains("<"))
                             {
-                                newFloor[x + 1][y] = newFloor[x + 1][y].replaceFirst("_", "<");
+                                newFloor[x + 1, y] = regex.Replace(newFloor[x + 1, y], "<", 1);
                             }
                         }
                     }
                 }
 
-                if (!cor.equals("____"))
+                if (!cor.Equals("____"))
                 {
-                    newFloor[x][y] = cor;
+                    newFloor[x,y] = cor;
                 }
             }
         }
