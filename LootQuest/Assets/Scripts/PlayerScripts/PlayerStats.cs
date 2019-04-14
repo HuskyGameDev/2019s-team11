@@ -5,14 +5,13 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
-    public static float playerHealth;
-    public static float maxHP;
+    public static float playerHealth = 100f;
+    public static float maxHP = 100f;
     public static int gold;
 
     void start()
     {
-        maxHP = 100;
-        playerHealth = 0;
+       
         gold = 0;
     }
 

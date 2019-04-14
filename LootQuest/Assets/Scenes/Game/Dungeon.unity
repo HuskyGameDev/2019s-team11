@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 1044343401}
-  maxHP: 0
-  currentHP: 0
+  maxHP: 100
+  currentHP: 50
 --- !u!212 &1044343403
 SpriteRenderer:
   m_ObjectHideFlags: 0
