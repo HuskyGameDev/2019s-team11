@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    private void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         
         playerHealth -= damage;

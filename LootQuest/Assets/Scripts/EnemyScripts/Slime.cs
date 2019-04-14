@@ -14,7 +14,7 @@ public class Slime : EnemyStats
 
     void CheckDistance()
     {
-        if (Vector2.Distance(target.position, transform.position) <= chaseRange && Vector3.Distance(target.position, transform.position) >= attackRange)
+        if (Vector2.Distance(target.position, transform.position) <= chaseRange && Vector2.Distance(target.position, transform.position) >= attackRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }

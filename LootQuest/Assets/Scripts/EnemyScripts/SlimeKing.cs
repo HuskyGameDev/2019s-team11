@@ -16,7 +16,10 @@ public class SlimeKing : EnemyStats
 
     void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        if (Vector2.Distance(target.position, transform.position) >= attackRange)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }
     }
 
     void CheckHealth()
@@ -26,10 +29,8 @@ public class SlimeKing : EnemyStats
             //play death animation
             //spawn loot?
             //death effect?
-            Instantiate(enemy);
-            Instantiate(enemy);
-            Instantiate(enemy);
-            Instantiate(enemy);
+            SpawnSlimes();
+            
 
             Destroy(gameObject);
         }
@@ -49,7 +50,19 @@ public class SlimeKing : EnemyStats
 
     void SpawnSlimes()
     {
-        Instantiate(enemy);
+        if (target.position.y < transform.position.y)
+        {
+            Instantiate(enemy, new Vector3(transform.position.x, transform.position.y - 5), Quaternion.identity);
+        }
+        else if (target.position.x < transform.position.x)
+        {
+            Instantiate(enemy, new Vector3(transform.position.x - 5, transform.position.y), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(enemy, new Vector3(transform.position.x + 5, transform.position.y), Quaternion.identity);
+        }
+        
     }
 
     // Update is called once per frame
@@ -57,9 +70,13 @@ public class SlimeKing : EnemyStats
     {
         CheckHealth();
         CheckTimer();
-        if (timer > 0)
+        if (timer > 1f)
         {
             Move();
+        }
+        else if (timer > .01f)
+        {
+
         }
         else
         {
@@ -67,6 +84,5 @@ public class SlimeKing : EnemyStats
             ResetTimer();
         }
         
-
     }
 }

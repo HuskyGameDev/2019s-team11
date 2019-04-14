@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278548f6d0d524949b64ceb2df4a067a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 30
   moveSpeed: 1
-  attackRange: 0
+  attackRange: 10
   chaseRange: 0
   attackPower: 1
   spawnPoint: {x: 0, y: 0}
