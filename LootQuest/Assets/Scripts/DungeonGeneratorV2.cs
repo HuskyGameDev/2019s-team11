@@ -98,8 +98,6 @@ public class DungeonGenerator1 : MonoBehaviour
         findExitPath(startX, startY);
     }
 
-
-
     private string[,] findExitPath(int startX, int startY)
     {
         path = new string[floorWidth,floorHeight];
@@ -223,7 +221,7 @@ public class DungeonGenerator1 : MonoBehaviour
             }
         }
     }
-
+    
     public String[,] corridorCreater(String[,] floor, String[,] path)
     {
         String[,] newFloor = new String[floorWidth,floorHeight];
@@ -621,7 +619,7 @@ public class DungeonGenerator1 : MonoBehaviour
         }
         return newFloor;
     }
-
+    
     private void genExit()
     {
         Boolean exitFound = false;
