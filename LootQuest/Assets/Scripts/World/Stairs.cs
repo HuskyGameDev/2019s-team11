@@ -24,7 +24,6 @@ public class Stairs : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && isOnStairs == true)
         {
-            Debug.Log("wooooo");
             SceneManager.LoadScene(sceneToLoad);
         }
     }
