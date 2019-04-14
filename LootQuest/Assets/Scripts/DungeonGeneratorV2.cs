@@ -71,10 +71,255 @@ public class DungeonGenerator1 : MonoBehaviour
     private int eX;
     private int eY;
     private string[,] path;
+    private string[,] corFloor;
+
     // Start is called before the first frame update
     void Start()
     {
         createFloor();
+        tileFloor();
+    }
+
+    private void tileFloor()
+    {
+        Boolean U = false;
+        Boolean D = false;
+        Boolean L = false;
+        Boolean R = false;
+
+        System.Random rand = new System.Random();
+
+        int chance = 0;
+        String[,] room;
+        for (int y = 0; y < floorHeight; y++)
+        {
+            for (int x = 0; x < floorWidth; x++)
+            {
+                if (floor[x,y].Equals("X"))
+                {
+                    //Checking for connections to generic room
+                    if (corFloor[x,y].Contains("^"))
+                    {
+                        U = true;
+                    }
+                    if (corFloor[x,y].Contains("v"))
+                    {
+                        D = true;
+                    }
+                    if (corFloor[x,y].Contains("<"))
+                    {
+                        L = true;
+                    }
+                    if (corFloor[x,y].Contains(">"))
+                    {
+                        R = true;
+                    }
+
+                    //Creating Generic room or Corridor
+                    chance = rand.Next(0, 5) - 2;
+                    if (chance <= 0)
+                    {
+                        floor[x,y] = "C";
+                        room = createCorridor(U, D, L, R);
+                        addRoom(room, x, y);
+                    }
+                    else
+                    {
+                        room = createRoom(U, D, L, R);
+                        addRoom(room, x, y);
+                    }
+                }
+                else if (floor[x,y].Equals("S"))
+                {
+                    //Checking for connections to start room
+                    if (corFloor[x,y].Contains("^"))
+                    {
+                        U = true;
+                    }
+                    if (corFloor[x,y].Contains("v"))
+                    {
+                        D = true;
+                    }
+                    if (corFloor[x,y].Contains("<"))
+                    {
+                        L = true;
+                    }
+                    if (corFloor[x,y].Contains(">"))
+                    {
+                        R = true;
+                    }
+                    room = createStart(U, D, L, R);
+                    addRoom(room, x, y);
+                }
+                else if (floor[x,y].Equals("E"))
+                {
+                    //Checking for connections to exit room
+                    if (corFloor[x,y].Contains("^"))
+                    {
+                        U = true;
+                    }
+                    if (corFloor[x,y].Contains("v"))
+                    {
+                        D = true;
+                    }
+                    if (corFloor[x,y].Contains("<"))
+                    {
+                        L = true;
+                    }
+                    if (corFloor[x,y].Contains(">"))
+                    {
+                        R = true;
+                    }
+                    room = createExit(U, D, L, R);
+                    addRoom(room, x, y);
+                }
+                else
+                {
+                    room = createEmpty();
+                    addRoom(room, x, y);
+                }
+                U = false;
+                D = false;
+                L = false;
+                R = false;
+            }
+        }
+    }
+
+    private string[,] createEmpty()
+    {
+        throw new NotImplementedException();
+    }
+
+    private string[,] createExit(bool u, bool d, bool l, bool r)
+    {
+        throw new NotImplementedException();
+    }
+
+    private string[,] createStart(bool u, bool d, bool l, bool r)
+    {
+        throw new NotImplementedException();
+    }
+
+    private string[,] createRoom(bool u, bool d, bool l, bool r)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void addRoom(string[,] room, int xOffset, int yOffset)
+    {
+        //System.Random rand = new System.Random();
+        //int name = 0;
+        for (int y = 0; y < 16; y++)
+        {
+            for (int x = 0; x < 16; x++)
+            {
+                if (room[x,y].Equals("wu"))
+                { 
+                    Vector3Int pos = new Vector3Int(x*xOffset, y*yOffset, 0);
+                    wallMap.SetTile(pos, topWallTile);
+                }
+                else if (room[x,y].Equals("wd"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, botWallTile);
+                }
+                else if (room[x,y].Equals("wl"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, leftWallTile);
+                }
+                else if (room[x,y].Equals("wr"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, rightWallTile);
+                }
+                else if (room[x,y].Equals("citl"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, ITLWallTile);
+                }
+                else if (room[x,y].Equals("citr"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, ITRWallTile);
+                }
+                else if (room[x,y].Equals("cibl"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, IBLWallTile);
+                }
+                else if (room[x,y].Equals("cibr"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, IBRWallTile);
+                }
+                else if (room[x,y].Equals("cotl"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, OTLWallTile);
+                }
+                else if (room[x,y].Equals("cotr"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, OTRWallTile);
+                }
+                else if (room[x,y].Equals("cobl"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, OBLWallTile);
+                }
+                else if (room[x,y].Equals("cobr"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    wallMap.SetTile(pos, OBRWallTile);
+                }
+                else if (room[x,y].Equals("S"))
+                {
+                    //spawnX = x + (roomWidth * xOffset);
+                    //spawnY = y + (roomHeight * yOffset);
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    groundMap.SetTile(pos, groundTile);
+                }
+                else if (room[x,y].Equals("E"))
+                {
+                    //exitX = x + (roomWidth * xOffset);
+                    //exitY = y + (roomHeight * yOffset);
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    groundMap.SetTile(pos, groundTile);
+                }
+                else if (room[x,y].Equals("0") || room[x,y].Equals("D") || room[x,y].Equals("1"))
+                {
+                    //name = ran.nextInt(4);
+
+                    //if (name == 0)
+                    //{
+                    //    setTile(x + (roomWidth * xOffset), y + (roomHeight * yOffset), new FloorTile((x + (roomWidth * xOffset)) * Tile.size, (y + (roomHeight * yOffset)) * Tile.size, "floor1"));
+                    //}
+                    //else
+                    //{
+                    //    setTile(x + (roomWidth * xOffset), y + (roomHeight * yOffset), new FloorTile((x + (roomWidth * xOffset)) * Tile.size, (y + (roomHeight * yOffset)) * Tile.size, "floor2"));
+                    //}
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    groundMap.SetTile(pos, groundTile);
+                }
+                else if (room[x,y].Equals("e"))
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    pitMap.SetTile(pos, pitTile);
+                }
+                else
+                {
+                    Vector3Int pos = new Vector3Int(x * xOffset, y * yOffset, 0);
+                    pitMap.SetTile(pos, pitTile);
+                }
+            }
+        }
+    }
+
+    private string[,] createCorridor(bool u, bool d, bool l, bool r)
+    {
+        throw new NotImplementedException();
     }
 
     void createFloor()
@@ -96,6 +341,8 @@ public class DungeonGenerator1 : MonoBehaviour
         genExit();
 
         findExitPath(startX, startY);
+
+        corFloor = corridorCreater();
     }
 
     private string[,] findExitPath(int startX, int startY)
@@ -222,7 +469,7 @@ public class DungeonGenerator1 : MonoBehaviour
         }
     }
     
-    public String[,] corridorCreater(String[,] floor, String[,] path)
+    public String[,] corridorCreater()
     {
         String[,] newFloor = new String[floorWidth,floorHeight];
         for (int y = 0; y < floorHeight; y++)
