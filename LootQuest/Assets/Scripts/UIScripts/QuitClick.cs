@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class Quit : MonoBehaviour {
+public class QuitClick : MonoBehaviour {
 
     //quits the menu on click
-    public void QuitClick()
+    public void Quit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
