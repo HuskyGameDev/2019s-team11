@@ -12,7 +12,6 @@ public class EnemyStats : MonoBehaviour
     public Vector2 spawnPoint;
     public Vector2 range;
     public Transform enemyAttackPosition;
-    public int numOfAttacks;
     public float attackTimerStart = 1f;
     public float attackTimer = 1f;
     public float waitForAttack = .5f;
@@ -44,7 +43,6 @@ public class EnemyStats : MonoBehaviour
             }
             else
             {
-                numOfAttacks++;
                 attackTimer = attackTimerStart;
                 waitForAttack = .5f;
                 shouldAttack = false;
