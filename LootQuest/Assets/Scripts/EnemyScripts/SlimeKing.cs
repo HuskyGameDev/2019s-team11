@@ -97,4 +97,11 @@ public class SlimeKing : EnemyStats
         }
         
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(enemyAttackPosition.position, attackRange);
+
+    }
 }
