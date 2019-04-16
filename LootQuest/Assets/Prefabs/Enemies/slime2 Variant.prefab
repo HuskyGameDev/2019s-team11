@@ -12,20 +12,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: slime2 Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 8036891716986770420, guid: 0b4d00ee90de08f498b618a964d0fc29,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8036891716986770415, guid: 0b4d00ee90de08f498b618a964d0fc29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.78
+      value: 5.8929873
       objectReference: {fileID: 0}
     - target: {fileID: 8036891716986770415, guid: 0b4d00ee90de08f498b618a964d0fc29,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.99
+      value: -4.3346295
       objectReference: {fileID: 0}
     - target: {fileID: 8036891716986770415, guid: 0b4d00ee90de08f498b618a964d0fc29,
         type: 3}
@@ -74,33 +69,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
         type: 3}
-      propertyPath: MoveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
-        type: 3}
-      propertyPath: ChaseRange
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
-        type: 3}
-      propertyPath: health
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
-        type: 3}
-      propertyPath: attackRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
-        type: 3}
       propertyPath: chaseRange
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8036891716986770419, guid: 0b4d00ee90de08f498b618a964d0fc29,
         type: 3}
-      propertyPath: moveSpeed
-      value: 2
+      propertyPath: enemyAttackPosition
+      value: 
+      objectReference: {fileID: 7074683781024223789}
+    - target: {fileID: 664277484, guid: 0b4d00ee90de08f498b618a964d0fc29, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4d00ee90de08f498b618a964d0fc29, type: 3}
+--- !u!4 &7074683781024223789 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 664277484, guid: 0b4d00ee90de08f498b618a964d0fc29,
+    type: 3}
+  m_PrefabInstance: {fileID: 7074683780546593729}
+  m_PrefabAsset: {fileID: 0}
