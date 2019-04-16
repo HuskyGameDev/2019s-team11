@@ -5,6 +5,7 @@ using UnityEngine;
 public class Slime : EnemyStats
 {
     public Transform target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,18 @@ public class Slime : EnemyStats
         if (Vector2.Distance(target.position, transform.position) <= chaseRange && Vector2.Distance(target.position, transform.position) >= attackRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            shouldAttack = false;
         }
         else if (Vector2.Distance(target.position, transform.position) >= chaseRange * 2)
         {
             transform.position = Vector2.MoveTowards(transform.position, spawnPoint, moveSpeed * Time.deltaTime);
+            shouldAttack = false;
         }
+        else if (Vector2.Distance(target.position, transform.position) < attackRange)
+        {
+            shouldAttack = true;
+        }
+
     }
 
     void CheckHealth()
@@ -39,7 +47,21 @@ public class Slime : EnemyStats
     // Update is called once per frame
     void Update()
     {
-        CheckHealth();
-        CheckDistance();
+        if (shouldAttack == true)
+        {
+            MeleeAttack();
+        }
+        else
+        {
+            CheckDistance();
+        }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(enemyAttackPosition.position, attackRange);
+
     }
 }

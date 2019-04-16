@@ -19,6 +19,11 @@ public class SlimeKing : EnemyStats
         if (Vector2.Distance(target.position, transform.position) >= attackRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            shouldAttack = false;
+        }
+        else
+        {
+            shouldAttack = true;
         }
     }
 
@@ -69,20 +74,34 @@ public class SlimeKing : EnemyStats
     void Update()
     {
         CheckHealth();
-        CheckTimer();
-        if (timer > 1f)
+        if(shouldAttack == true)
         {
-            Move();
-        }
-        else if (timer > .01f)
-        {
-
+            MeleeAttack();
         }
         else
         {
-            SpawnSlimes();
-            ResetTimer();
+            CheckTimer();
+            if (timer > 1f)
+            {
+                Move();
+            }
+            else if (timer > .01f)
+            {
+
+            }
+            else
+            {
+                SpawnSlimes();
+                ResetTimer();
+            }
         }
         
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(enemyAttackPosition.position, attackRange);
+
     }
 }
