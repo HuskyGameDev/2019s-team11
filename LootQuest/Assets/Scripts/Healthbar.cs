@@ -13,20 +13,24 @@ public class Healthbar : MonoBehaviour
     private void Awake()
     {
         bar = GameObject.Find("BarSprite");
+       
     }
     void Update()
     {
-        bar.transform.localScale = new Vector3(normalize(currentHP, maxHP), 1f, 0f);
+        currentHP = PlayerStats.playerHealth;
+        maxHP = PlayerStats.maxHP;
+        bar.transform.localScale = new Vector2(normalize(currentHP, maxHP), 1f);
     }
     private void Start()
     {
-        currentHP = maxHP;
+        currentHP = PlayerStats.playerHealth;
+        maxHP = PlayerStats.maxHP;
       
     }
 
     public float normalize(float curHP, float maxHP)
     {
-        return curHP / maxHP;
+        return (curHP / maxHP);
     }
 
 }

@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 7897976275191574263, guid: daeb21cac2773164a8da1763e3a2d030,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7897976275191574263, guid: daeb21cac2773164a8da1763e3a2d030,
         type: 3}
@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bar: {fileID: 1044343400}
-  maxHP: 0
-  currentHP: 0
+  maxHP: 100
+  currentHP: 100
 --- !u!212 &1044343403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: 9210946461298049019, guid: 68ba5fa9aa6b69f4d8f08f303cdbf122,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9210946461298049019, guid: 68ba5fa9aa6b69f4d8f08f303cdbf122,
         type: 3}
