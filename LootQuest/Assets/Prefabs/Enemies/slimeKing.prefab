@@ -41,8 +41,8 @@ GameObject:
   - component: {fileID: 3275400836188158751}
   - component: {fileID: 4795741980285576677}
   - component: {fileID: 7928822259760719624}
-  - component: {fileID: 7928822259760719625}
   - component: {fileID: 1882189884}
+  - component: {fileID: 7140110129799495231}
   m_Layer: 8
   m_Name: slimeKing
   m_TagString: Enemy
@@ -134,32 +134,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7928822259760719625
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7928822259760719623}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8125, y: 11.8125}
-    newSize: {x: 10.8125, y: 11.8125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.8125, y: 11.8125}
-  m_EdgeRadius: 0
 --- !u!114 &1882189884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +161,60 @@ MonoBehaviour:
   target: {fileID: 0}
   spawnpoints: []
   enemy: {fileID: 983637418222817326, guid: 3eb80069202b8b84f88166e31afd3565, type: 3}
+--- !u!60 &7140110129799495231
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928822259760719623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.8125, y: 11.8125}
+    newSize: {x: 10.8125, y: 11.8125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 5.40625, y: -2.40625}
+      - {x: 5.15625, y: -1.21875}
+      - {x: 4.34375, y: 0.40625}
+      - {x: 3.53125, y: 1.59375}
+      - {x: 2.40625, y: 2.65625}
+      - {x: 1.84375, y: 3.09375}
+      - {x: 2.15625, y: 3.59375}
+      - {x: 2.15625, y: 4.71875}
+      - {x: 1.65625, y: 5.09375}
+      - {x: 0.96875, y: 5.21875}
+      - {x: 0.65625, y: 5.71875}
+      - {x: 0.46875, y: 5.90625}
+      - {x: -0.34375, y: 5.90625}
+      - {x: -0.59375, y: 5.65625}
+      - {x: -0.90625, y: 5.15625}
+      - {x: -1.65625, y: 5.09375}
+      - {x: -2.21875, y: 4.78125}
+      - {x: -2.21875, y: 3.59375}
+      - {x: -1.78125, y: 3.09375}
+      - {x: -2.46875, y: 2.65625}
+      - {x: -3.53125, y: 1.59375}
+      - {x: -4.40625, y: 0.40625}
+      - {x: -5.09375, y: -1.28125}
+      - {x: -5.40625, y: -2.53125}
+      - {x: -5.40625, y: -4.90625}
+      - {x: -5.03125, y: -5.34375}
+      - {x: -4.21875, y: -5.65625}
+      - {x: -2.78125, y: -5.90625}
+      - {x: 2.84375, y: -5.90625}
+      - {x: 3.40625, y: -5.84375}
+      - {x: 5.03125, y: -5.40625}
+      - {x: 5.40625, y: -4.96875}
