@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7929850631967046031}
   - component: {fileID: 7929850631967046024}
   - component: {fileID: 7929850631967046025}
-  - component: {fileID: 7960652254877625846}
   m_Layer: 8
   m_Name: bat
   m_TagString: Enemy
@@ -177,36 +176,15 @@ MonoBehaviour:
   moveSpeed: 3
   attackRange: 2
   chaseRange: 8
-  attackPower: 1
+  attackPower: 100
   spawnPoint: {x: 0, y: 0}
-  attackTimerStart: 2
-  attackTimer: 2
-  waitForAttack: 0.5
-  shouldAttack: 0
   range: {x: 0, y: 0}
   enemyAttackPosition: {fileID: 2109624861}
-  target: {fileID: 0}
---- !u!114 &7960652254877625846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929850631967046026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0523abac492536349ab0d01bbfef4bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  moveSpeed: 0
-  attackRange: 0
-  chaseRange: 0
-  attackPower: 0
-  spawnPoint: {x: 0, y: 0}
   attackTimerStart: 2
   attackTimer: 2
   waitForAttack: 0.5
   shouldAttack: 0
-  range: {x: 0, y: 0}
-  enemyAttackPosition: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  target: {fileID: 0}

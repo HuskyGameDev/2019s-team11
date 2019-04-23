@@ -16,6 +16,7 @@ public class EnemyStats : MonoBehaviour
     public float attackTimer = 1f;
     public float waitForAttack = .5f;
     public bool shouldAttack;
+    public LayerMask whatIsPlayer;
 
     public void TakeDamage(int damage)
     {
@@ -47,7 +48,7 @@ public class EnemyStats : MonoBehaviour
                 waitForAttack = .5f;
                 shouldAttack = false;
                 range = new Vector2(0, 0);
-                Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(enemyAttackPosition.position, attackRange);
+                Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(enemyAttackPosition.position, attackRange, whatIsPlayer);
                 for (int i = 0; i < playerToDamage.Length; i++)
                 {
                     playerToDamage[i].GetComponent<PlayerStats>().takeDamage(attackPower);

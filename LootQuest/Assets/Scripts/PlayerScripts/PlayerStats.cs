@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
 
-    public static float playerHealth = 100f;
-    public static float maxHP = 100f;
+    public static float playerHealth;
+    public static float maxHP;
     public static int gold;
 
     void start()
@@ -19,9 +20,9 @@ public class PlayerStats : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        
+
         playerHealth -= damage;
-        if(playerHealth <= 0)
+        if (playerHealth <= 0)
         {
             Die();
         }
@@ -31,5 +32,6 @@ public class PlayerStats : MonoBehaviour
     {
         //play death animation
         Destroy(gameObject);
+        SceneManager.LoadScene("Overworld");
     }
 }
