@@ -19,7 +19,7 @@ public class Healthbar : MonoBehaviour
     {
         currentHP = PlayerStats.playerHealth;
         maxHP = PlayerStats.maxHP;
-        bar.transform.localScale = new Vector2(normalize(currentHP, maxHP), 1f);
+        bar.transform.localScale = new Vector3(normalize(currentHP, maxHP), 1f, 0f);
     }
     private void Start()
     {

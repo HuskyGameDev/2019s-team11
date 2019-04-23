@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
 
-    public static float playerHealth;
-    public static float maxHP;
-    public static int gold;
+    public static float playerHealth = 100f;
+    public static float maxHP = 100f;
+    public static int gold = 0;
 
     void start()
     {
@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         //play death animation
-        Destroy(gameObject);
         SceneManager.LoadScene("Overworld");
+        playerHealth = 100f;
     }
 }
