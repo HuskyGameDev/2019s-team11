@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private new Animator animation;
     private Vector2 direction;
     Vector2 relativePosition;
+    bool isWalking = false;
 
 
     void Start()
@@ -38,9 +39,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Animate()
     {
-        Vector2 relativePosition = new Vector2(GetComponent<Transform>().position.x - Input.mousePosition.x, GetComponent<Transform>().position.y - Input.mousePosition.y);
-        //animation.SetFloat("Horizontal", relativePosition.x);
-        //animation.SetFloat("Veritcal", relativePosition.y);
+        //Vector2 relativePosition = new Vector2(GetComponent<Transform>().position.x - Input.mousePosition.x, GetComponent<Transform>().position.y - Input.mousePosition.y);
+        animation.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+        animation.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+
+        if(Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            animation.SetBool("isWalking", false);
+            animation.speed = 0;
+        } else
+        {
+            animation.SetBool("isWalking", true);
+            animation.speed = 1;
+        }
 
     }
 
@@ -51,16 +62,19 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = Vector2.up;
         }
+
         //Move West
         else if (Input.GetAxisRaw("Horizontal") < 0.0f && Input.GetAxisRaw("Vertical") == 0.0f)
         {
             direction = Vector2.left;
         }
+
         //Move South
         else if (Input.GetAxisRaw("Horizontal") == 0.0f && Input.GetAxisRaw("Vertical") < 0.0f)
         {
             direction = Vector2.down;
         }
+
         //Move East
         else if (Input.GetAxisRaw("Horizontal") > 0.0f && Input.GetAxisRaw("Vertical") == 0.0f)
         {
