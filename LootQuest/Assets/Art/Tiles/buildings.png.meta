@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 417aa931909528b4e913b5cd4282c0a9
+guid: bf8e067a1e8db1247884ce154e527529
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dirt-path_0
-    21300002: dirt-path_1
-    21300004: dirt-path_2
-    21300006: dirt-path_3
+    21300000: buildings_0
+    21300002: buildings_1
+    21300004: buildings_2
+    21300006: buildings_3
+    21300008: buildings_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -88,13 +89,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirt-path_0
+      name: buildings_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 9
+        y: 182
+        width: 64
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -102,19 +103,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 860652285a9ea48408a019843060f7e5
+      spriteID: d94f6c87e84aee34f8173a211bc9af9a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt-path_1
+      name: buildings_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
+        x: 84
+        y: 182
+        width: 64
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,19 +123,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e42a6efcfee28345a9d99c03c28c762
+      spriteID: 7d0804d3f5dc90c46882280d402a356d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt-path_2
+      name: buildings_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 8
+        y: 100
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,19 +143,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37038fc2ff9a96641a9d03f2d65ca2cf
+      spriteID: 7f1d4756334ebb74daa5359e18097f9e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt-path_3
+      name: buildings_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 89
+        y: 109
+        width: 64
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,7 +163,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f054df79f1e52e49a707eb4c5f4588f
+      spriteID: f7e17a1e024b4b5408661a43b0dcfc6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buildings_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 71
+        width: 30
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe43e55b82a286e418a60cbbbc561aea
       vertices: []
       indices: 
       edges: []
@@ -170,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ec68b31459d3da54a89b4a402f6a755f
+    spriteID: 993371d6042653246bbafb19249cd6de
     vertices: []
     indices: 
     edges: []

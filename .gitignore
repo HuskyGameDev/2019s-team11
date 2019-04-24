@@ -36,3 +36,9 @@ sysinfo.txt
 *.unitypackage
 *.pidb.meta
 *.pdb.meta
+LootQuest/Assets/Sound/Sound Effects.meta
+LootQuest/Assets/Sound/Sound Effects/Enemy SFX.meta
+LootQuest/Assets/Sound/Sound Effects/Footsteps.meta
+LootQuest/Assets/Sound/Sound Effects/Object-Creature Damage SFX.meta
+LootQuest/Assets/Sound/Sound Effects/Player Damage SFX.meta
+LootQuest/Assets/Sound/Sound Effects/Weapon SFX.meta
